@@ -2,17 +2,18 @@ module FarMar
   class Market
     attr_reader :id, :name, :address, :city, :country, :state, :zip
 
-    def initialize
-      @market_data = CSV.read("support/markets.csv", "r")
-
-    end
-
+    #This is a class/factory method, the factory is creating the instances
     def self.all
-
-      puts @market_data
+      CSV.open("support/markets.csv", "r").each do |line|
+        line
+      end
     end
 
-    def self.find(id)
+    def count
+      self.all.count
+    end
+
+    def find(id)
     end
   end
 end
