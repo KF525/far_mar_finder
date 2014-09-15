@@ -4,9 +4,8 @@ module FarMar
 
     #This is a class/factory method, the factory is creating the instances
     def self.all
-      CSV.open("support/markets.csv", "r").each do |line|
-        line
-      end
+      CSV.read("support/markets.csv", "r")
+    
     end
 
     def count
