@@ -18,8 +18,15 @@ module FarMar
       end
     end
 
-    # def self.find(id)
-    #   self.all.find {|row| row.id == id}
-    # end
+    def self.find(id)
+      self.all.find {|row| row.id == id}
+    end
+
+    def self.by_market(market_id)
+      #find the first vendor whose market is 'id'
+      Vendor.all.find_all {|row| row.market_id == market_id}
+
+    end
+
   end
 end
