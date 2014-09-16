@@ -19,15 +19,14 @@ module FarMar
         end
     end
 
-    def count
-      self.all.count
+    def self.find(id)
+      self.all.find {|row| row.id == id}
     end
 
-    def self.find(id)
-      self.all.find {|row| row.id.to_i == id}
+    def vendors(id)
+      Vendor.all.find {|row| row.market_id == id}
     end
   end
 end
-
 
 #rspec spec/lib/far_mar/market_spec.rb
