@@ -1,13 +1,13 @@
 module FarMar
   class Market
-    attr_accessor :id, :name, :address, :city, :country, :state, :zip
+    attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(market_array)
       @id = market_array[0].to_i
       @name = market_array[1]
       @address = market_array[2]
       @city = market_array[3]
-      @country = market_array[4]
+      @county = market_array[4]
       @state = market_array[5]
       @zip = market_array[6]
     end
