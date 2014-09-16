@@ -13,9 +13,9 @@ module FarMar
     end
 
     def self.all
-        @market_data = CSV.read("support/markets.csv", "r")
-        @market_data.collect do |row|
-          FarMar::Market.new(row)
+        market_data = CSV.read("support/markets.csv", "r")
+        market_data.collect do |row|
+          self.new(row)
         end
     end
 
@@ -24,9 +24,8 @@ module FarMar
     end
 
     def vendors
-      Vendor.all.find {|row| row.market_id == self.id}
+      Vendor.all.find_all {|row| row.market_id == self.id}
     end
   end
 end
-
 #rspec spec/lib/far_mar/market_spec.rb
