@@ -14,7 +14,6 @@ module FarMar
 
       vendor_data.collect do |row|
         self.new(row)
-        # Vendor.new([])
       end
     end
 
@@ -23,10 +22,15 @@ module FarMar
     end
 
     def self.by_market(market_id)
-      #find the first vendor whose market is 'id'
-      Vendor.all.find_all {|row| row.market_id == market_id}
-
+      self.all.find_all {|row| row.market_id == market_id}
     end
 
+    def market
+      Market.all.find {|row| row.id == market_id}
+    end
+
+    def sales
+      #self.sales.count
+    end
   end
 end
