@@ -23,8 +23,8 @@ module FarMar
       self.all.find {|row| row.id == id}
     end
 
-    def vendors(id)
-      Vendor.all.find {|row| row.market_id == id}
+    def vendors
+      Vendor.all.find {|row| row.market_id == self.id}
     end
   end
 end

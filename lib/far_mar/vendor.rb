@@ -13,7 +13,7 @@ module FarMar
       @vendor_data = CSV.read("support/vendors.csv", "r")
 
       @vendor_data.collect do |row|
-        FarMar::Vendors.new(row)
+        self.new(row)
       end
     end
 
