@@ -20,5 +20,16 @@ module FarMar
       self.all.find {|row| row.id == id}
     end
 
+    def self.by_vendor(vendor_id)
+      self.all.find_all {|row| row.vendor_id == vendor_id}
+
+    end
+
+    def vendor
+      #puts Vendor.all
+      Vendor.all.find {|row| row.id == vendor_id} # doesn't work with find_all
+    end
+
+
   end
 end
