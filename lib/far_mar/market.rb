@@ -13,10 +13,10 @@ module FarMar
     end
 
     def self.all
-        market_data = CSV.read("support/markets.csv", "r")
-        market_data.collect do |row|
-          self.new(row)
-        end
+      market_data = CSV.read("support/markets.csv", "r")
+      market_data.collect do |row|
+        self.new(row)
+      end
     end
 
     def self.find(id)
@@ -24,7 +24,23 @@ module FarMar
     end
 
     def vendors
-      Vendor.all.find_all {|row| row.market_id == self.id}
+      Vendor.all.find_all {|row| row.market_id == id}
+    end
+
+    def product
+      #takes all the product objects
+      #uses vendor_id attribute to find vendor (id)
+      #uses vendor (id) to find market_id
+      #collects all products that share market_id
+      Product.all.each {|row|
+        row.vendor_id == vendors
+        }
+
+        #Product.all.find_all {|row| row.vendor_id == Vendor.all.id} -->
+        #Vendor.all.id --> Vendor.all.market_id
+        if Vendor.all.market_id == a_market_id
+          #collect it/return it somehow
+        end
     end
   end
 end
