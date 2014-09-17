@@ -19,7 +19,13 @@ module FarMar
     end
 
     def self.find(id)
-      #self.all.find {|row| row.id == id}
+      self.all.find {|row| row.id == id}
+    end
+
+    def self.between(beginning_time, end_time)
+    end
+
+    def day
     end
 
 

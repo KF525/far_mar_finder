@@ -30,6 +30,14 @@ module FarMar
       Vendor.all.find {|row| row.id == vendor_id} # doesn't work with find_all
     end
 
+    def sales
+      Sale.all.find_all {|row| row.product_id == id} ## fix later!
+    end
+
+    def number_of_sales
+      sales.count #?
+    end
+
 
   end
 end
