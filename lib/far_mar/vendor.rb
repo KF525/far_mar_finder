@@ -36,7 +36,8 @@ module FarMar
     end
 
     def products
+      Product.all.find_all {|row| row.vendor_id == id}
     end
-    
+
   end
 end
