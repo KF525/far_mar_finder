@@ -1,13 +1,13 @@
 module FarMar
   class Sale
-    attr_accessor :ID, :Amount, :Purchase_Time, :Vendor_ID, :Product_ID
+    attr_accessor :id, :amount, :purchase_time, :vendor_id, :product_id
 
     def initialize(sales_array)
-      @ID = sales_array[0]
-      @Amount = sales_array[1]
-      @Purchase_Time = sales_array[2]
-      @Vendor_ID = sales_array[3]
-      @Product_ID = sales_array[4]
+      @id = sales_array[0].to_i
+      @amount = sales_array[1].to_i
+      @purchase_time = sales_array[2]
+      @vendor_id = sales_array[3].to_i
+      @product_id = sales_array[4].to_i
     end
 
     def self.all
@@ -19,7 +19,7 @@ module FarMar
     end
 
     def self.find(id)
-      self.all.find {|row| row.id == id}
+      #self.all.find {|row| row.id == id}
     end
 
 
