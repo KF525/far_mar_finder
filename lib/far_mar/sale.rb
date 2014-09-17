@@ -22,7 +22,15 @@ module FarMar
       self.all.find {|row| row.id == id}
     end
 
-    def self.between(beginning_time, end_time)
+    # def self.between(beginning_time, end_time)
+    # end
+
+    def vendor
+      Vendor.all.find {|row| row.id == vendor_id}
+    end
+
+    def product
+      Product.all.find {|row| row.id == product_id}
     end
   end
 end

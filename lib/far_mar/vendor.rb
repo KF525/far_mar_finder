@@ -30,8 +30,6 @@ module FarMar
     end
 
     def sales
-      #self.sales.count
-      #Vendor_ID = (Vendor)id
       Sale.all.find_all {|row| row.vendor_id == id}
     end
 

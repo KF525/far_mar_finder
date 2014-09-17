@@ -26,18 +26,11 @@ module FarMar
     end
 
     def vendor
-      #puts Vendor.all
-      Vendor.all.find {|row| row.id == vendor_id} # doesn't work with find_all
+      Vendor.all.find {|row| row.id == vendor_id}
     end
 
     def sales
-      Sale.all.find_all {|row| row.product_id == id} ## fix later!
+      Sale.all.find_all {|row| row.product_id == id}
     end
-
-    def number_of_sales
-      sales.count #?
-    end
-
-
   end
 end

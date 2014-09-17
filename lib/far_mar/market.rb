@@ -28,4 +28,3 @@ module FarMar
     end
   end
 end
-#rspec spec/lib/far_mar/market_spec.rb
