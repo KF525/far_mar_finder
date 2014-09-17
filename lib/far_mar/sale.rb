@@ -5,7 +5,7 @@ module FarMar
     def initialize(sales_array)
       @id = sales_array[0].to_i
       @amount = sales_array[1].to_i
-      @purchase_time = sales_array[2]
+      @purchase_time = DateTime.parse(sales_array[2])
       @vendor_id = sales_array[3].to_i
       @product_id = sales_array[4].to_i
     end
@@ -24,10 +24,5 @@ module FarMar
 
     def self.between(beginning_time, end_time)
     end
-
-    def day
-    end
-
-
   end
 end
