@@ -43,6 +43,11 @@ module FarMar
       #   #if Vendor.all.market_id == a_market_id
       #     #collect it/return it somehow
       #   #end
+
+      # if Vendor.market_id == id
+      #   Vendor.products
+      # end
     end
+
   end
 end
