@@ -49,12 +49,15 @@ module FarMar
       # end
 
 
-      vendors.collect do |vendor_row|
-          if vendor_row.id  == Product.vendor_id
-            puts "found!"
-          end
+      # vendors.collect do |vendor_row|
+      #     if vendor_row.id  == Product.vendor_id
+      #       puts "found!"
+      #     end
+      #end
+      
+      def self.search(search_term)
+        self.all.find_all {|row| name.include?(search_term)} #|| Vendor.name.include?(search_term)}
       end
     end
-
   end
 end
