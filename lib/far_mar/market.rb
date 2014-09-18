@@ -54,9 +54,10 @@ module FarMar
       #       puts "found!"
       #     end
       #end
-      
+
       def self.search(search_term)
-        self.all.find_all {|row| name.include?(search_term)} #|| Vendor.name.include?(search_term)}
+        self.all.find_all {|a_market| a_market.include?(search_term)}
+        FarMar::Vendor.all.find_all {|a_vendor| a_vendor.name.include?(search_term)}
       end
     end
   end
