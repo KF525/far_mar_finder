@@ -28,19 +28,21 @@ module FarMar
     end
 
     def product
-      #takes all the product objects
-      #uses vendor_id attribute to find vendor (id)
-      #uses vendor (id) to find market_id
-      #collects all products that share market_id
-      Product.all.each {|row|
-        row.vendor_id == vendors
-        }
-
-        #Product.all.find_all {|row| row.vendor_id == Vendor.all.id} -->
-        #Vendor.all.id --> Vendor.all.market_id
-        if Vendor.all.market_id == a_market_id
-          #collect it/return it somehow
-        end
+      # Vendor.all.find_all {|row| row.id == id}
+      #   #Vendor.products
+      # #takes all the product objects
+      # #uses vendor_id attribute to find vendor (id)
+      # #uses vendor (id) to find market_id
+      # #collects all products that share market_id
+      # #Product.all.each {|row|
+      #   #row.vendor_id == vendors
+      #   #}
+      #
+      #   #Product.all.find_all {|row| row.vendor_id == Vendor.all.id} -->
+      #   #Vendor.all.id --> Vendor.all.market_id
+      #   #if Vendor.all.market_id == a_market_id
+      #     #collect it/return it somehow
+      #   #end
     end
   end
 end
