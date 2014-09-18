@@ -47,6 +47,13 @@ module FarMar
       # if Vendor.market_id == id
       #   Vendor.products
       # end
+
+
+      vendors.collect do |vendor_row|
+          if vendor_row.id  == Product.vendor_id
+            puts "found!"
+          end
+      end
     end
 
   end
