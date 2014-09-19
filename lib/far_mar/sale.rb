@@ -11,30 +11,34 @@ module FarMar
     end
 
     def self.all
+      @all ||= all_create
+    end
+
+    def self.all_create
       sales_data = CSV.read("support/sales.csv", "r")
 
       sales_data.collect do |row|
-        self.new(row)
+        new(row)
       end
     end
 
     def self.find(id)
-      self.all.find {|row| row.id == id}
+      all.find { |row| row.id == id }
     end
 
     def vendor
-      Vendor.all.find {|row| row.id == vendor_id}
+      Vendor.all.find { |row| row.id == vendor_id }
     end
 
     def product
-      Product.all.find {|row| row.id == product_id}
+      Product.all.find { |row| row.id == product_id }
     end
 
     def self.between(beginning_time, end_time)
       beginning_time = DateTime.parse(beginning_time)
       end_time = DateTime.parse(end_time)
 
-      self.all.find_all {|row| row.purchase_time > beginning_time && row.purchase_time < end_time}
+      all.find_all { |row| row.purchase_time > beginning_time && row.purchase_time < end_time }
     end
   end
 end

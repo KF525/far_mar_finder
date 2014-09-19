@@ -10,31 +10,35 @@ module FarMar
     end
 
     def self.all
+      @all ||= all_create
+    end
+
+    def self.all_create
       vendor_data = CSV.read("support/vendors.csv", "r")
 
       vendor_data.collect do |row|
-        self.new(row)
+        new(row)
       end
     end
 
     def self.find(id)
-      self.all.find {|row| row.id == id}
+      all.find {|row| row.id == id }
     end
 
     def self.by_market(market_id)
-      self.all.find_all {|row| row.market_id == market_id}
+      all.find_all { |row| row.market_id == market_id }
     end
 
     def market
-      Market.all.find {|row| row.id == market_id}
+      Market.all.find { |row| row.id == market_id }
     end
 
     def sales
-      Sale.all.find_all {|row| row.vendor_id == id}
+      Sale.all.find_all { |row| row.vendor_id == id }
     end
 
     def products
-      Product.all.find_all {|row| row.vendor_id == id}
+      Product.all.find_all { |row| row.vendor_id == id }
     end
 
   end

@@ -13,38 +13,42 @@ module FarMar
     end
 
     def self.all
+      @all ||= all_create
+    end
+
+    def self.all_create
       market_data = CSV.read("support/markets.csv", "r")
       market_data.collect do |row|
-        self.new(row)
+        new(row)
       end
     end
 
     def self.find(id)
-      self.all.find {|row| row.id == id}
+      all.find { |row| row.id == id }
     end
 
     def vendors
-      Vendor.all.find_all {|row| row.market_id == id}
+      Vendor.all.find_all { |row| row.market_id == id }
     end
 
     def vendor_id
-      vendors.collect {|vendor| vendor.id}
+      vendors.collect { |vendor| vendor.id }
     end
 
     def products
       vendor_id.collect do |an_id|
-        Product.all.find_all {|row| row.vendor_id == an_id }
+        Product.all.find_all { |row| row.vendor_id == an_id }
       end
     end
 
     def self.search(search_term)
-      self.all.find_all {|a_market| a_market.name.include?(search_term)}
+      all.find_all { |a_market| a_market.name.include?(search_term) }
       #HELP! FarMar::Vendor.all.find_all {|a_vendor| a_vendor.name.include?(search_term)}
     end
 
     def vendor_sales
       vendor_id.collect do |an_id|
-        FarMar::Sale.all.find_all {|row| row.vendor_id == an_id}
+        FarMar::Sale.all.find_all { |row| row.vendor_id == an_id }
       end
     end
 
@@ -64,11 +68,11 @@ module FarMar
     end
 
     def prefered_vendor
-      Vendor.all.find {|row | row.id == (vendor_revenue.sort_by{|k,v| v}.last.first)}
+      Vendor.all.find { |row | row.id == (vendor_revenue.sort_by{|k,v| v}.last.first) }
     end
 
     def worst_vendor
-      Vendor.all.find {|row| row.id == (vendor_revenue.sort_by{|k,v| v}.first.first)}
+      Vendor.all.find { |row| row.id == (vendor_revenue.sort_by{|k,v| v}.first.first) }
     end
   end
 end
