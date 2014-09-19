@@ -6,7 +6,7 @@ module FarMar
       @id = market_array[0].to_i
       @name = market_array[1]
       @address = market_array[2]
-      @cityv = market_array[3]
+      @city = market_array[3]
       @county = market_array[4]
       @state = market_array[5]
       @zip = market_array[6]
