@@ -27,37 +27,34 @@ module FarMar
       Vendor.all.find_all {|row| row.market_id == id}
     end
 
-    def product
-      # Vendor.all.find_all {|row| row.id == id}
-      #   #Vendor.products
-      # #takes all the product objects
-      # #uses vendor_id attribute to find vendor (id)
-      # #uses vendor (id) to find market_id
-      # #collects all products that share market_id
-      # #Product.all.each {|row|
-      #   #row.vendor_id == vendors
-      #   #}
-      #
-      #   #Product.all.find_all {|row| row.vendor_id == Vendor.all.id} -->
-      #   #Vendor.all.id --> Vendor.all.market_id
-      #   #if Vendor.all.market_id == a_market_id
-      #     #collect it/return it somehow
-      #   #end
+    def vendor_id
+      Vendor.all.find_all {|row| row.market_id == id}.collect {|vendor| vendor.id}
+    end
 
-      # if Vendor.market_id == id
-      #   Vendor.products
-      # end
+    def products
+      vendor_id.collect do |an_id|
+        Product.all.find_all {|row| row.vendor_id == an_id }
+      end
+    end
 
+    def self.search(search_term)
+      self.all.find_all {|a_market| a_market.include?(search_term)}
+      Vendor.all.find_all {|a_vendor| a_vendor.name.include?(search_term)}
+    end
 
-      # vendors.collect do |vendor_row|
-      #     if vendor_row.id  == Product.vendor_id
-      #       puts "found!"
-      #     end
-      #end
-
-      def self.search(search_term)
-        self.all.find_all {|a_market| a_market.include?(search_term)}
-        FarMar::Vendor.all.find_all {|a_vendor| a_vendor.name.include?(search_term)}
+      #at a given market - vendor with most revenue
+      #Sale.all.find_all {|row| row.vendor_id}
+    def prefered_vendor
+      total = 0
+  
+      vendors.collect do |a_vendor|
+        a_vendor_sale = FarMar::Sale.all.find_all {|row| row.vendor_id == a_vendor.id}
+          a_vendor_sale.collect do |sale|
+          puts sale.amount
+          puts total+= sale.amound
+          puts total
+            #needs to return vendor that has the most total
+        end
       end
     end
   end
