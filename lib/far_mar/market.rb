@@ -36,9 +36,10 @@ module FarMar
     end
 
     def products
-      vendor_id.collect do |an_id|
+      product_array = vendor_id.collect do |an_id|
         Product.all.find_all { |row| row.vendor_id == an_id }
       end
+      product_array.flatten
     end
 
     def self.search(search_term)

@@ -43,7 +43,6 @@ describe FarMar::Market do
     it "has the zip '97202'" do
       expect(market.zip).to eq "97202"
     end
-
   end
 
   describe "instance methods" do
@@ -54,6 +53,39 @@ describe FarMar::Market do
 
     it "finds the vendors" do
       expect(market.vendors.first.id).to eq 1
+    end
+  end
+
+  describe "find products" do
+    let(:market) {FarMar::Market.find(1)}
+    it "responds to market products" do
+      expect(FarMar::Market.new({})).to respond_to :products
+    end
+
+    it "finds the market product sales" do
+      expect(market.products.first.id).to eq 1
+    end
+  end
+
+  describe "finds prefered vendor" do
+    let(:market) {FarMar::Market.find(1)}
+    it "responds to prefered vendor" do
+      expect(FarMar::Market.new({})).to respond_to :prefered_vendor
+    end
+
+    it "finds prefered vendor" do
+      expect(market.prefered_vendor.id).to eq 5
+    end
+  end
+
+  describe "finds worst vendor" do
+    let(:market) {FarMar::Market.find(1)}
+    it "responds to worst vendor" do
+      expect(FarMar::Market.new({})).to respond_to :worst_vendor
+    end
+
+    it "finds worst vendor" do
+      expect(market.worst_vendor.id).to eq 6
     end
   end
 end
