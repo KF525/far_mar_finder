@@ -44,7 +44,7 @@ module FarMar
 
     def vendor_sales
       vendor_id.collect do |an_id|
-        FarMar::Sale.all.find_all {|row| row.vendor_id == an_id} #do I need FarMar here?
+        FarMar::Sale.all.find_all {|row| row.vendor_id == an_id}
       end
     end
 
@@ -64,11 +64,11 @@ module FarMar
     end
 
     def prefered_vendor
-      vendor_revenue.sort_by{|k,v| v}.last.first
+      Vendor.all.find {|row | row.id == (vendor_revenue.sort_by{|k,v| v}.last.first)}
     end
 
     def worst_vendor
-      vendor_revenue.sort_by{|k,v| v}.first.first
+      Vendor.all.find {|row| row.id == (vendor_revenue.sort_by{|k,v| v}.first.first)}
     end
   end
 end
