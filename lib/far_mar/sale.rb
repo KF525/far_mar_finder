@@ -22,9 +22,6 @@ module FarMar
       self.all.find {|row| row.id == id}
     end
 
-    # def self.between(beginning_time, end_time)
-    # end
-
     def vendor
       Vendor.all.find {|row| row.id == vendor_id}
     end
@@ -33,12 +30,11 @@ module FarMar
       Product.all.find {|row| row.id == product_id}
     end
 
-    #returns a collection of FarMar::Sale objects where the purchase time is between the two times given as arguments
-
     def self.between(beginning_time, end_time)
-      self.all.find_all {|row| row.purchase_time > DateTime.parse(beginning_time) && row.purchase_time < DateTime.parse(end_time)}
+      beginning_time = DateTime.parse(beginning_time)
+      end_time = DateTime.parse(end_time)
 
-
+      self.all.find_all {|row| row.purchase_time > beginning_time && row.purchase_time < end_time}
     end
   end
 end

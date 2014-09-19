@@ -32,8 +32,9 @@ module FarMar
     def sales
       Sale.all.find_all {|row| row.product_id == id}
     end
-
-    #def number_of_sales
-    #end
+    
+    def number_of_sales
+      sales.count
+    end
   end
 end
